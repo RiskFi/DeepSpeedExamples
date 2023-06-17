@@ -169,7 +169,9 @@ def get_cmd(args, step_num):
 def launch_cmd(args, step_num, cmd):
     working_dir = step_dirs[step_num]
     print(f"Running:\n{cmd}")
-    p = subprocess.Popen(cmd, cwd=working_dir, shell=True)
+    # to check if it works right on colab
+    env = os.environ.copy()
+    p = subprocess.Popen(cmd, cwd=working_dir, shell=True, env=env)
     p.wait()
     if p.returncode != 0:
         raise RuntimeError('\n\n'.join((
