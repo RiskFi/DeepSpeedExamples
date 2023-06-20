@@ -171,8 +171,14 @@ def launch_cmd(args, step_num, cmd):
     print(f"Running:\n{cmd}")
     # to check if it works right on colab
     env = os.environ.copy()
-    p = subprocess.Popen(cmd, cwd=working_dir, shell=True, env=env)
-    p.wait()
+    p = subprocess.Popen(cmd, cwd=working_dir, shell=True, env=env, stdout=subprocess.PIPE)
+
+    # p.wait()
+    output = process.communicate()[0]
+
+    print('Akshay:: p.returncode ::', p.returncode)
+    print('Akshay:: output of command::', output)
+
     if p.returncode != 0:
         raise RuntimeError('\n\n'.join((
             f"Step {step_num} exited with non-zero status {p.returncode}",
