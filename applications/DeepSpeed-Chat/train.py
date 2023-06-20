@@ -174,7 +174,7 @@ def launch_cmd(args, step_num, cmd):
     p = subprocess.Popen(cmd, cwd=working_dir, shell=True, env=env, stdout=subprocess.PIPE)
 
     # p.wait()
-    output = process.communicate()[0]
+    output = subprocess.communicate()[0]
 
     print('Akshay:: p.returncode ::', p.returncode)
     print('Akshay:: output of command::', output)
