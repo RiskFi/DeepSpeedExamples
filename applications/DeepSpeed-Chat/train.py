@@ -177,7 +177,7 @@ def launch_cmd(args, step_num, cmd):
     output = p.communicate()[0]
 
     print('Akshay:: p.returncode ::', p.returncode)
-    print('Akshay:: output of command::', output)
+    print('Akshay:: output of command::', output.decode())
 
     if p.returncode != 0:
         raise RuntimeError('\n\n'.join((
